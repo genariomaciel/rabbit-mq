@@ -8,15 +8,15 @@ Arquivos criados:
 - `definitions.json` — define os parametros para criação da fila `rabbit-connector-queue`.
 - `rabbitmq.conf` — que vincula o definitions.json ao docker compose.
 
-## Como usar
+## Como usar 
 
-### Subir os containers (na raiz do projeto onde está o `docker-compose.yml`):
+### Subindo container com dados defaults:
 
 ```bash
 docker compose up -d
 ```
 
-### Variáveis de ambiente (opcionais):
+### Subindo container com variáveis de ambiente customizadas:
 - `RABBITMQ_DEFAULT_USER` — usuário admin (padrão: `rabbit-connector`)
 - `RABBITMQ_DEFAULT_PASS` — senha admin (padrão: `segredo`)
 - `RABBITMQ_QUEUE` — nome da fila a ser criada (padrão: `rabbit-connector-queue`)
@@ -25,6 +25,7 @@ docker compose up -d
 RABBITMQ_DEFAULT_USER=rabbit-connector RABBITMQ_DEFAULT_PASS=segredo docker compose up -d
 ```
 
+### Plugin Management
 A interface web do Management fica disponível em:
 
 http://localhost:15672  (user/senha conforme variáveis acima)
