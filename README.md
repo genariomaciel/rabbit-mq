@@ -36,8 +36,7 @@ A interface web do Management fica disponível em:
 
 http://localhost:15672  (user/senha conforme variáveis acima)
 
-Notas e troubleshooting
-- Se o `rabbit-init` falhar por timeout, verifique os logs do serviço RabbitMQ:
+### Logs do serviço RabbitMQ:
 
 ```bash
 docker compose logs rabbitmq
