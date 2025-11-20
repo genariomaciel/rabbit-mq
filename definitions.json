@@ -1,0 +1,35 @@
+{
+  "rabbit_version": "3.13.7",
+  "users": [
+    {
+      "name": "rabbit-connector",
+      "password_hash": "B6PywhTfOUqgzmCTOyIbeABI+wXPhWt2C4fBe+KTmD67//V2",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "rabbit-connector",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "queues": [
+    {
+      "name": "rabbit-connector-queue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "exchanges": [],
+  "bindings": []
+}
