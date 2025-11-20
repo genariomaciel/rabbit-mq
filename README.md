@@ -12,15 +12,21 @@ Arquivos criados:
 
 ### Subindo container com dados defaults:
 
+Comando
 ```bash
 docker compose up -d
 ```
 
 ### Subindo container com variáveis de ambiente customizadas:
-- `RABBITMQ_DEFAULT_USER` — usuário admin (padrão: `rabbit-connector`)
-- `RABBITMQ_DEFAULT_PASS` — senha admin (padrão: `segredo`)
-- `RABBITMQ_QUEUE` — nome da fila a ser criada (padrão: `rabbit-connector-queue`)
 
+Variáveis utilizadas
+```
+  RABBITMQ_DEFAULT_USER=rabbit-connector
+  RABBITMQ_DEFAULT_PASS=segredo
+  RABBITMQ_QUEUE=rabbit-connector-queue
+```
+
+Commando
 ```bash
 RABBITMQ_DEFAULT_USER=rabbit-connector RABBITMQ_DEFAULT_PASS=segredo docker compose up -d
 ```
@@ -37,14 +43,8 @@ Notas e troubleshooting
 docker compose logs rabbitmq
 ```
 
-- Para executar novamente a criação da fila, remova o container `rabbit-init` e execute o serviço manualmente ou altere `RABBITMQ_QUEUE` e suba de novo.
 
-Compatibilidade
-- Testado com `rabbitmq:3-management` e Docker Compose v2/v1 (comando `docker compose`).
-
-
-
-## Configurando o `passowrd_hash` no arquivo `difinitions.json`
+## Criando o `passowrd_hash` para o arquivo `definitions.json`
 - Gerar o hash usando o container RabbitMQ já em execução
   Executar o commando
   ```bash
@@ -71,4 +71,3 @@ Compatibilidade
   "password_hash": "PBKDF2$sha256$10000$...hash-gerado..."
   ```
 
-  
