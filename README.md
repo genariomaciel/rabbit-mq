@@ -46,13 +46,29 @@ Compatibilidade
 
 ## Configurando o `passowrd_hash` no arquivo `difinitions.json`
 - Gerar o hash usando o container RabbitMQ já em execução
-  - Executar o commando: `docker exec rabbitmq rabbitmqctl hash_password segredo`
-  - Copiar a saída (exatamente o que foi gerado, toda a string).
+  Executar o commando
+  ```bash
+  docker exec rabbitmq rabbitmqctl hash_password segredo
+  ```
+  Copiar a saída (exatamente o que foi gerado, toda a string).
 
 - Gerar o hash usando um container temporário da mesma imagem (se o container principal não estiver rodando)
-  - Executar o commando: `docker run --rm rabbitmq:3-management rabbitmqctl hash_password segredo`
-  - Copiar a saída (exatamente o que foi gerado, toda a string).
+  Executar o commando
+  ```bash
+    docker run --rm rabbitmq:3-management rabbitmqctl hash_password segredo
+  ```
+
+  Copiar a saída (exatamente o que foi gerado, toda a string).
 
 - Substitua o valor atual de "password_hash" pelo hash gerado. Exemplo (hipotético):
-  - Antes: `"password_hash": ""`\
-  - Depois: `"password_hash": "PBKDF2$sha256$10000$...hash-gerado..."`
+
+  De
+  ```json
+  "password_hash": ""
+  ```
+  Para
+  ```json
+  "password_hash": "PBKDF2$sha256$10000$...hash-gerado..."
+  ```
+
+  
