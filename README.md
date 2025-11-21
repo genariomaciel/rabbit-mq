@@ -1,11 +1,11 @@
-# RabbitMQ com management + fila criada via docker-compose
+# RabbitMQ com Management
 
 ## Detalhando o repostitório
 Este repositório contém um `docker-compose.yml` que sobe um RabbitMQ com o plugin Management habilitado e cria automaticamente uma fila no exchange default.
 
 Arquivos criados:
-- `docker-compose.yml` — define o serviço `rabbitmq`.
-- `definitions.json` — define os parametros para criação da fila `rabbit-connector-queue`.
+- `docker-compose.yml` — definições do serviço `rabbitmq`.
+- `definitions.json` — definições para criação da fila `rabbit-connector-queue`.
 - `rabbitmq.conf` — que vincula o definitions.json ao docker compose.
 
 ## Como usar 

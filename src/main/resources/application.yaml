@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: rabbitmq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: "rabbit-connector"
+    password: "segredo"
+    queue-name: rabbit-connector-queue
+  
