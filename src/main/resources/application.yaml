@@ -6,5 +6,23 @@ spring:
     port: 5672
     username: "rabbit-connector"
     password: "segredo"
-    queue-name: rabbit-connector-queue
+
+# Configuração de filas e exchanges
+app:
+  rabbitmq:
+    exchanges:
+      default: "default-exchange"
+      fanout: "fanout-exchange"
+      topic: "topic-exchange"
+    
+    queues:
+      default: "default-queue"
+      fanout-1: "fanout-queue-1"
+      fanout-2: "fanout-queue-2"
+      topic-orders: "topic-orders-queue"
+      topic-notifications: "topic-notifications-queue"
+    
+    routing-keys:
+      topic-orders: "orders.*"
+      topic-notifications: "notifications.*"
   

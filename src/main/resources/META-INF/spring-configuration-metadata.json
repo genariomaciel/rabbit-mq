@@ -1,0 +1,61 @@
+{
+  "groups": [
+    {
+      "name": "app.rabbitmq",
+      "type": "com.leicam.rabbitmq.config.RabbitProperties",
+      "description": "RabbitMQ configuration properties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.rabbitmq.exchanges.default",
+      "type": "java.lang.String",
+      "description": "Default exchange name"
+    },
+    {
+      "name": "app.rabbitmq.exchanges.fanout",
+      "type": "java.lang.String",
+      "description": "Fanout exchange name"
+    },
+    {
+      "name": "app.rabbitmq.exchanges.topic",
+      "type": "java.lang.String",
+      "description": "Topic exchange name"
+    },
+    {
+      "name": "app.rabbitmq.queues.default",
+      "type": "java.lang.String",
+      "description": "Default queue name"
+    },
+    {
+      "name": "app.rabbitmq.queues.fanout-1",
+      "type": "java.lang.String",
+      "description": "Fanout queue 1 name"
+    },
+    {
+      "name": "app.rabbitmq.queues.fanout-2",
+      "type": "java.lang.String",
+      "description": "Fanout queue 2 name"
+    },
+    {
+      "name": "app.rabbitmq.queues.topic-orders",
+      "type": "java.lang.String",
+      "description": "Topic orders queue name"
+    },
+    {
+      "name": "app.rabbitmq.queues.topic-notifications",
+      "type": "java.lang.String",
+      "description": "Topic notifications queue name"
+    },
+    {
+      "name": "app.rabbitmq.routing-keys.topic-orders",
+      "type": "java.lang.String",
+      "description": "Topic orders routing key pattern"
+    },
+    {
+      "name": "app.rabbitmq.routing-keys.topic-notifications",
+      "type": "java.lang.String",
+      "description": "Topic notifications routing key pattern"
+    }
+  ]
+}

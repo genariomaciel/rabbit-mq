@@ -1,6 +1,6 @@
 package com.leicam.rabbitmq.config;
 
-import org.springframework.amqp.core.ReturnedMessage;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,9 +21,12 @@ public class RabbitConfiguration {
   private String username;
   @Value("${spring.rabbitmq.password}")
   private String password;
-  @Value("${spring.rabbitmq.queue-name}")
-  private String queueName;
 
+  private final RabbitProperties rabbitProperties;
+
+  public RabbitConfiguration(RabbitProperties rabbitProperties) {
+    this.rabbitProperties = rabbitProperties;
+  }
 
   @Bean
   public CachingConnectionFactory connectionFactory() {
@@ -38,7 +41,6 @@ public class RabbitConfiguration {
   @Bean
   public RabbitTemplate rabbitTemplate(CachingConnectionFactory connectionFactory, ConverterService converterService) {
     RabbitTemplate template = new RabbitTemplate(connectionFactory);
-    // ensure unroutable messages are returned
     template.setMandatory(true);
 
     template.setConfirmCallback((CorrelationData correlationData, boolean ack, String cause) -> {
@@ -55,6 +57,85 @@ public class RabbitConfiguration {
     });
 
     return template;
+  }
+
+  // ============ EXCHANGES ============
+
+  @Bean
+  public DirectExchange defaultExchange() {
+    return new DirectExchange(rabbitProperties.getExchanges().getDefaultExchange(), true, false);
+  }
+
+  @Bean
+  public FanoutExchange fanoutExchange() {
+    return new FanoutExchange(rabbitProperties.getExchanges().getFanout(), true, false);
+  }
+
+  @Bean
+  public TopicExchange topicExchange() {
+    return new TopicExchange(rabbitProperties.getExchanges().getTopic(), true, false);
+  }
+
+  // ============ QUEUES ============
+
+  @Bean
+  public Queue defaultQueue() {
+    return new Queue(rabbitProperties.getQueues().getDefaultQueue(), true);
+  }
+
+  @Bean
+  public Queue fanoutQueue1() {
+    return new Queue(rabbitProperties.getQueues().getFanout1(), true);
+  }
+
+  @Bean
+  public Queue fanoutQueue2() {
+    return new Queue(rabbitProperties.getQueues().getFanout2(), true);
+  }
+
+  @Bean
+  public Queue topicOrdersQueue() {
+    return new Queue(rabbitProperties.getQueues().getTopicOrders(), true);
+  }
+
+  @Bean
+  public Queue topicNotificationsQueue() {
+    return new Queue(rabbitProperties.getQueues().getTopicNotifications(), true);
+  }
+
+  // ============ BINDINGS ============
+
+  @Bean
+  public Binding defaultBinding(Queue defaultQueue, DirectExchange defaultExchange) {
+    return BindingBuilder.bind(defaultQueue)
+        .to(defaultExchange)
+        .with(rabbitProperties.getQueues().getDefaultQueue());
+  }
+
+  @Bean
+  public Binding fanoutBinding1(Queue fanoutQueue1, FanoutExchange fanoutExchange) {
+    return BindingBuilder.bind(fanoutQueue1)
+        .to(fanoutExchange);
+  }
+
+  @Bean
+  public Binding fanoutBinding2(Queue fanoutQueue2, FanoutExchange fanoutExchange) {
+    return BindingBuilder.bind(fanoutQueue2)
+        .to(fanoutExchange);
+  }
+
+  @Bean
+  public Binding topicOrdersBinding(Queue topicOrdersQueue, TopicExchange topicExchange) {
+    return BindingBuilder.bind(topicOrdersQueue)
+        .to(topicExchange)
+        .with("orders.*");
+  }
+
+  @Bean
+  public Binding topicNotificationsBinding(Queue topicNotificationsQueue, TopicExchange topicExchange) {
+    return BindingBuilder.bind(topicNotificationsQueue)
+        .to(topicExchange)
+        .with("notifications.*");
   }
 
 }
