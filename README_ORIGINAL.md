@@ -26,9 +26,15 @@ Variáveis utilizadas
   RABBITMQ_QUEUE=rabbit-connector-queue
 ```
 
-Commando
+Commando\
+Git Bash
 ```bash
 RABBITMQ_DEFAULT_USER=rabbit-connector RABBITMQ_DEFAULT_PASS=segredo docker compose up -d
+```
+
+PowerShell
+```powershell
+$env:RABBITMQ_DEFAULT_USER="rabbit-connector"; $env:RABBITMQ_DEFAULT_PASS="segredo"; docker compose up -d
 ```
 
 ### Plugin Management

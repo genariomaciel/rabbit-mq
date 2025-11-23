@@ -8,7 +8,7 @@
   ],
   "properties": [
     {
-      "name": "app.rabbitmq.exchanges.default",
+      "name": "app.rabbitmq.exchanges.default-exchange",
       "type": "java.lang.String",
       "description": "Default exchange name"
     },
@@ -23,7 +23,7 @@
       "description": "Topic exchange name"
     },
     {
-      "name": "app.rabbitmq.queues.default",
+      "name": "app.rabbitmq.queues.default-queue",
       "type": "java.lang.String",
       "description": "Default queue name"
     },
@@ -36,6 +36,11 @@
       "name": "app.rabbitmq.queues.fanout-2",
       "type": "java.lang.String",
       "description": "Fanout queue 2 name"
+    },
+    {
+      "name": "app.rabbitmq.queues.fanout-3",
+      "type": "java.lang.String",
+      "description": "Fanout queue 3 name"
     },
     {
       "name": "app.rabbitmq.queues.topic-orders",

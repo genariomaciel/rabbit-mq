@@ -30,6 +30,14 @@ public class ConsumerService {
     System.out.println("=====================================");
   }
 
+  @RabbitListener(queues = "#{@rabbitProperties.getQueues().getFanout3()}")
+  public void listenFanoutQueue3(String message) {
+    System.out.println("=====================================");
+    System.out.println("[FANOUT QUEUE 3] Mensagem recebida:");
+    System.out.println(message);
+    System.out.println("=====================================");
+  }
+
   @RabbitListener(queues = "#{@rabbitProperties.getQueues().getTopicOrders()}")
   public void listenTopicOrders(String message) {
     System.out.println("=====================================");

@@ -45,6 +45,7 @@ public class RabbitProperties {
         private String defaultQueue;
         private String fanout1;
         private String fanout2;
+        private String fanout3;
         private String topicOrders;
         private String topicNotifications;
 
@@ -70,6 +71,14 @@ public class RabbitProperties {
 
         public void setFanout2(String fanout2) {
             this.fanout2 = fanout2;
+        }
+        
+        public String getFanout3() {
+            return fanout3;
+        }
+
+        public void setFanout3(String fanout3) {
+            this.fanout3 = fanout3;
         }
 
         public String getTopicOrders() {

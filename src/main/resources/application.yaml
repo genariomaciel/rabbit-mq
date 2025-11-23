@@ -11,14 +11,15 @@ spring:
 app:
   rabbitmq:
     exchanges:
-      default: "default-exchange"
+      default-exchange: "default-exchange"
       fanout: "fanout-exchange"
       topic: "topic-exchange"
     
     queues:
-      default: "default-queue"
+      default-queue: "default-queue"
       fanout-1: "fanout-queue-1"
       fanout-2: "fanout-queue-2"
+      fanout-3: "fanout-queue-3"
       topic-orders: "topic-orders-queue"
       topic-notifications: "topic-notifications-queue"
     

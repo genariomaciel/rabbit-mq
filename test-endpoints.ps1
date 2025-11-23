@@ -47,7 +47,7 @@ Write-Host "2. Testando FANOUT EXCHANGE" -ForegroundColor Yellow
 Write-Host "================================" -ForegroundColor Yellow
 Write-Host "Enviando mensagem para TODAS as filas fanout..." -ForegroundColor White
 
-$body = @{message = "Broadcast Fanout - vai para fanout-queue-1 E fanout-queue-2"} | ConvertTo-Json
+$body = @{message = "Broadcast Fanout - vai para fanout-queue-1 E fanout-queue-2 E fanout-queue-3"} | ConvertTo-Json
 $response = Invoke-RestMethod -Uri "$BASE_URL/api/v1/publisher/fanout" `
   -Method Post `
   -Headers @{"Content-Type" = "application/json"} `
