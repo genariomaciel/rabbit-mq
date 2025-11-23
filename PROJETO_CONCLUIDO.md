@@ -40,13 +40,13 @@
              ▼
       [fanout-exchange]
              │
-    ┌────────┴────────┐
-    │                 │
-    ▼                 ▼
-[fanout-queue-1] [fanout-queue-2]
-    │                 │
-    ▼                 ▼
-   Listener1       Listener2
+    ┌────────┴────────┐────────────────┐
+    │                 │                │
+    ▼                 ▼                ▼
+[fanout-queue-1] [fanout-queue-2] [fanout-queue-2]
+    │                 │                │
+    ▼                 ▼                ▼
+   Listener1       Listener2       Listener2
 ```
 ✅ Broadcast para múltiplas filas
 

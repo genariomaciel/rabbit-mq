@@ -15,7 +15,7 @@ Este projeto implementa um sistema completo de publicação e consumo de mensage
    - Routing Key: `default-queue`
 
 2. **fanout-exchange** (Fanout)
-   - Filas: `fanout-queue-1`, `fanout-queue-2`
+   - Filas: `fanout-queue-1`, `fanout-queue-2`, `fanout-queue-3`
    - Sem routing key (recebem tudo)
 
 3. **topic-exchange** (Topic)
