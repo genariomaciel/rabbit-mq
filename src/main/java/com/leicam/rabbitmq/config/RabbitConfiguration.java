@@ -22,12 +22,6 @@ public class RabbitConfiguration {
   @Value("${spring.rabbitmq.password}")
   private String password;
 
-  private final RabbitProperties rabbitProperties;
-
-  public RabbitConfiguration(RabbitProperties rabbitProperties) {
-    this.rabbitProperties = rabbitProperties;
-  }
-
   @Bean
   public CachingConnectionFactory connectionFactory() {
     CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(this.host, this.port);
